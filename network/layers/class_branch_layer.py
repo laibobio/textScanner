@@ -22,7 +22,7 @@ class ClassBranchLayer(Layer):
                                    padding="same",
                                    name="class_branch_conv1")
         # the classification number is Character Size + 1
-        self.conv2 = Convolution2D(filters=self.charset_size + 1,
+        self.conv2 = Convolution2D(filters=self.charset_size,
                                    kernel_size=(1, 1),
                                    padding="same",
                                    name="class_branch_conv2")

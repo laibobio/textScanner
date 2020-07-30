@@ -1,4 +1,5 @@
-from utils import logger as log,label_utils
+from utils import logger as log
+from utils.label import label_utils
 import conf
 from network import model as _model
 import logging,cv2
@@ -33,7 +34,7 @@ def pred(args):
     attention_weights = []
 
     # 开始是STX
-    from utils.label_utils import convert_to_id
+    from utils.label.label_utils import convert_to_id
     decoder_index = convert_to_id([conf.CHAR_STX], charset)
     decoder_state = decoder_init_state
 

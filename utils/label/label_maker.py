@@ -4,6 +4,10 @@ from utils import image_utils
 import numpy as np
 import logging
 import cv2
+import conf
+from utils.label import label_utils
+
+charset = label_utils.get_charset(conf.CHARSET)
 
 logger = logging.getLogger(__name__)
 

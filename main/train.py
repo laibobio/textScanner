@@ -18,10 +18,9 @@ logger = logging.getLogger(__name__)
 def train(args):
     charset = label_utils.get_charset(conf.CHARSET)
     conf.CHARSET_SIZE = len(charset)
-
+    # print(conf.CHARSET_SIZE)
     model = TextScannerModel(conf, charset)
     model.comile_model()
-
     train_sequence = SequenceData(name="Train",
                                   label_dir=args.train_label_dir,
                                   label_file=args.train_label_file,
@@ -59,14 +58,15 @@ def train(args):
     tboard = TensorBoard(log_dir=tb_log_name, histogram_freq=1, batch_size=2, write_grads=True)
     early_stop = EarlyStopping(patience=args.early_stop, verbose=1, mode='max')
     checkpoint = ModelCheckpoint(filepath=checkpoint_path, verbose=1, mode='max')
-    visibility_debug = TBoardVisual('Attetnon Visibility', tb_log_name, charset, args, valid_sequence)
+    # visibility_debug = TBoardVisual('Attetnon Visibility', tb_log_name, charset, args, valid_sequence)
 
     model.fit(
         x=train_sequence,
         steps_per_epoch=args.steps_per_epoch,  # 其实应该是用len(train_sequence)，但是这样太慢了，所以，我规定用一个比较小的数，比如1000
         epochs=args.epochs,
         workers=args.workers,  # 同时启动多少个进程加载
-        callbacks=[tboard, checkpoint, early_stop, visibility_debug],
+        # callbacks=[tboard, checkpoint, early_stop, visibility_debug],
+        callbacks=[tboard, checkpoint, early_stop],
         use_multiprocessing=True,
         validation_data=valid_sequence,
         validation_steps=args.validation_steps,

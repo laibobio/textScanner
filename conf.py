@@ -6,7 +6,7 @@ import argparse,sys
 '''
 MAX_SEQUENCE = 30        # 最大的识别汉字的长度
 MASK_VALUE = 0
-CHARSET = "config/charset.4100.txt" # 一级字库+标点符号+数字+二级字库中的地名/人名常用字（TianT.制作的）
+CHARSET = "/media/dataA/ywzuo/textscanner/config/charset.4100.txt" # 一级字库+标点符号+数字+二级字库中的地名/人名常用字（TianT.制作的）
 INPUT_IMAGE_HEIGHT = 64  # 图像归一化的高度
 INPUT_IMAGE_WIDTH = 256  # 最大的图像宽度
 GRU_HIDDEN_SIZE = 64     # GRU隐含层神经元数量
@@ -26,10 +26,10 @@ LABLE_FORMAT="plaintext" # 标签格式：labelme，json格式的；plaintext，
 def init_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--name" ,default="attention_ocr",type=str,help="")
-    parser.add_argument("--train_label_dir",    default="data/train",    type=str, help="")
-    parser.add_argument("--validate_label_dir", default="data/train", type=str, help="")
-    parser.add_argument("--train_label_file",    default="data/train/train.txt", type=str, help="")
-    parser.add_argument("--validate_label_file", default="data/train/train.txt", type=str, help="")
+    parser.add_argument("--train_label_dir",    default="/media/dataA/ywzuo/textscanner/data/train",    type=str, help="")
+    parser.add_argument("--validate_label_dir", default="/media/dataA/ywzuo/textscanner/data/train", type=str, help="")
+    parser.add_argument("--train_label_file",    default="/media/dataA/ywzuo/textscanner/data/train/train.txt", type=str, help="")
+    parser.add_argument("--validate_label_file", default="/media/dataA/ywzuo/textscanner/data/train/train.txt", type=str, help="")
     parser.add_argument("--epochs" ,default=1,type=int,help="")
     parser.add_argument("--debug_mode", default=False, action='store_true', help="")
     parser.add_argument("--debug_step", default=1,type=int,help="") # 多少步骤打印注意力
@@ -59,7 +59,7 @@ def init_args():
 
 def init_pred_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--image" ,default=1,type=str,help="")
-    parser.add_argument("--model" ,default=1,type=str,help="")
+    parser.add_argument("--image", default=1,type=str,help="")
+    parser.add_argument("--model", default=1,type=str,help="")
     args = parser.parse_args()
     return args
