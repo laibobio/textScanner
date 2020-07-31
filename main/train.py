@@ -67,15 +67,15 @@ def train(args):
         workers=args.workers,  # 同时启动多少个进程加载
         # callbacks=[tboard, checkpoint, early_stop, visibility_debug],
         callbacks=[tboard, checkpoint, early_stop],
-        use_multiprocessing=True,
+        use_multiprocessing=False,
         validation_data=valid_sequence,
         validation_steps=args.validation_steps,
         verbose=2)
 
     logger.info("Train end!")
 
-    model_path = conf.DIR_MODEL + "/textscanner-{}.hdf5".format(util.timestamp_s())
-    model.save(model_path)
+    model_path = conf.DIR_MODEL + "/textscanner-{}.h5".format(util.timestamp_s())
+    model.save_weights(model_path)
     logger.info("Save model saved to ：%s", model_path)
 
 

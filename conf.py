@@ -6,7 +6,7 @@ import argparse,sys
 '''
 MAX_SEQUENCE = 30        # 最大的识别汉字的长度
 MASK_VALUE = 0
-CHARSET = "/media/dataA/ywzuo/textscanner/config/charset.4100.txt" # 一级字库+标点符号+数字+二级字库中的地名/人名常用字（TianT.制作的）
+CHARSET = "/media/dataA/ywzuo/textscanner/config/charset_test.txt" # 一级字库+标点符号+数字+二级字库中的地名/人名常用字（TianT.制作的）
 INPUT_IMAGE_HEIGHT = 64  # 图像归一化的高度
 INPUT_IMAGE_WIDTH = 256  # 最大的图像宽度
 GRU_HIDDEN_SIZE = 64     # GRU隐含层神经元数量
@@ -17,7 +17,7 @@ DEBUG = True
 
 DIR_LOGS="logs"
 DIR_TBOARD="logs/tboard"
-DIR_MODEL="model"
+DIR_MODEL="/media/dataA/ywzuo/textscanner/model"
 DIR_CHECKPOINT="model/checkpoint"
 LABLE_FORMAT="plaintext" # 标签格式：labelme，json格式的；plaintext，纯文本的
 
